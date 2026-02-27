@@ -1,0 +1,12 @@
+Source: ros-jazzy-rosbot-utils
+Section: misc
+Priority: optional
+Maintainer: Husarion <support@husarion.com>
+Build-Depends: debhelper (>= 9.0.0), python3-pytest <!nocheck>, ros-jazzy-ament-pep257 <!nocheck>, ros-jazzy-ros-workspace, python3-all, python3-setuptools, dh-python
+Homepage: https://husarion.com/
+Standards-Version: 3.9.2
+
+Package: ros-jazzy-rosbot-utils
+Architecture: any
+Depends: ${python3:Depends}, ${misc:Depends}, python3-argcomplete, python3-ftdi, python3-libgpiod, python3-pyudev, python3-requests, python3-serial, python3-sh, ros-jazzy-laser-filters, ros-jazzy-launch-ros, stm32flash, usbutils, ros-jazzy-ros-workspace
+Description: Utilities for ROSbot Series
