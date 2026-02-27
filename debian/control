@@ -1,0 +1,12 @@
+Source: ros-jazzy-rosbot-bringup
+Section: misc
+Priority: optional
+Maintainer: Husarion <support@husarion.com>
+Build-Depends: debhelper (>= 9.0.0), ros-jazzy-ament-cmake, ros-jazzy-ros-workspace
+Homepage: https://husarion.com/
+Standards-Version: 3.9.2
+
+Package: ros-jazzy-rosbot-bringup
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-jazzy-ros-workspace
+Description: ROSbot Series bringup package
