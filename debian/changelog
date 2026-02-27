@@ -1,0 +1,254 @@
+ros-jazzy-rosbot (0.18.6-1bookworm) bookworm; urgency=high
+
+
+
+ -- Husarion <support@husarion.com>  Thu, 26 Feb 2026 23:00:00 -0000
+
+ros-jazzy-rosbot (0.18.5-1bookworm) bookworm; urgency=high
+
+
+
+ -- Husarion <support@husarion.com>  Thu, 26 Feb 2026 23:00:00 -0000
+
+ros-jazzy-rosbot (0.18.4-1bookworm) bookworm; urgency=high
+
+
+
+ -- Husarion <support@husarion.com>  Thu, 26 Feb 2026 23:00:00 -0000
+
+ros-jazzy-rosbot (0.18.3-1bookworm) bookworm; urgency=high
+
+
+
+ -- Husarion <support@husarion.com>  Wed, 25 Feb 2026 23:00:00 -0000
+
+ros-jazzy-rosbot (0.18.2-1bookworm) bookworm; urgency=high
+
+
+
+ -- Husarion <support@husarion.com>  Wed, 25 Feb 2026 23:00:00 -0000
+
+ros-jazzy-rosbot (0.18.1-1bookworm) bookworm; urgency=high
+
+
+
+ -- Husarion <support@husarion.com>  Tue, 09 Dec 2025 23:00:00 -0000
+
+ros-jazzy-rosbot (0.18.0-1bookworm) bookworm; urgency=high
+
+
+
+ -- Husarion <support@husarion.com>  Sun, 07 Dec 2025 23:00:00 -0000
+
+ros-jazzy-rosbot (0.17.0-1bookworm) bookworm; urgency=high
+
+
+
+ -- Husarion <support@husarion.com>  Wed, 05 Nov 2025 23:00:00 -0000
+
+ros-jazzy-rosbot (0.16.1-1bookworm) bookworm; urgency=high
+
+
+
+ -- Husarion <support@husarion.com>  Wed, 16 Jul 2025 22:00:00 -0000
+
+ros-jazzy-rosbot (0.16.0-1bookworm) bookworm; urgency=high
+
+
+
+ -- Husarion <support@husarion.com>  Wed, 11 Jun 2025 22:00:00 -0000
+
+ros-jazzy-rosbot (0.15.1-1bookworm) bookworm; urgency=high
+
+
+
+ -- Husarion <support@husarion.com>  Tue, 08 Apr 2025 22:00:00 -0000
+
+ros-jazzy-rosbot (0.15.0-1bookworm) bookworm; urgency=high
+
+
+
+ -- Husarion <support@husarion.com>  Sun, 06 Apr 2025 22:00:00 -0000
+
+ros-jazzy-rosbot (0.13.2-1bookworm) bookworm; urgency=high
+
+
+
+ -- Husarion <support@husarion.com>  Tue, 07 May 2024 22:00:00 -0000
+
+ros-jazzy-rosbot (0.13.1-1bookworm) bookworm; urgency=high
+
+
+
+ -- Husarion <support@husarion.com>  Wed, 31 Jan 2024 23:00:00 -0000
+
+ros-jazzy-rosbot (0.13.0-1bookworm) bookworm; urgency=high
+
+
+
+ -- Husarion <support@husarion.com>  Sun, 14 Jan 2024 23:00:00 -0000
+
+ros-jazzy-rosbot (0.12.0-1bookworm) bookworm; urgency=high
+
+
+
+ -- Husarion <support@husarion.com>  Mon, 01 Jan 2024 23:00:00 -0000
+
+ros-jazzy-rosbot (0.11.1-1bookworm) bookworm; urgency=high
+
+
+
+ -- Husarion <support@husarion.com>  Thu, 28 Dec 2023 23:00:00 -0000
+
+ros-jazzy-rosbot (0.11.0-1bookworm) bookworm; urgency=high
+
+
+
+ -- Husarion <support@husarion.com>  Thu, 07 Dec 2023 23:00:00 -0000
+
+ros-jazzy-rosbot (0.10.5-1bookworm) bookworm; urgency=high
+
+
+
+ -- Husarion <support@husarion.com>  Mon, 04 Dec 2023 23:00:00 -0000
+
+ros-jazzy-rosbot (0.10.4-1bookworm) bookworm; urgency=high
+
+
+
+ -- Husarion <support@husarion.com>  Thu, 30 Nov 2023 23:00:00 -0000
+
+ros-jazzy-rosbot (0.10.3-1bookworm) bookworm; urgency=high
+
+
+
+ -- Husarion <support@husarion.com>  Tue, 07 Nov 2023 23:00:00 -0000
+
+ros-jazzy-rosbot (0.10.2-1bookworm) bookworm; urgency=high
+
+
+
+ -- Husarion <support@husarion.com>  Mon, 06 Nov 2023 23:00:00 -0000
+
+ros-jazzy-rosbot (0.10.1-1bookworm) bookworm; urgency=high
+
+
+
+ -- Husarion <support@husarion.com>  Tue, 24 Oct 2023 22:00:00 -0000
+
+ros-jazzy-rosbot (0.10.0-1bookworm) bookworm; urgency=high
+
+
+
+ -- Husarion <support@husarion.com>  Mon, 23 Oct 2023 22:00:00 -0000
+
+ros-jazzy-rosbot (0.9.0-1bookworm) bookworm; urgency=high
+
+
+
+ -- Husarion <support@husarion.com>  Sun, 15 Oct 2023 22:00:00 -0000
+
+ros-jazzy-rosbot (0.8.5-1bookworm) bookworm; urgency=high
+
+  * Merge remote-tracking branch 'origin/test-gazebo' into test-gazebo
+  * Merge branch 'humble' into test-gazebo
+  * Contributors: Jakub Delicat, rafal-gorecki
+
+ -- Husarion <support@husarion.com>  Tue, 10 Oct 2023 22:00:00 -0000
+
+ros-jazzy-rosbot (0.8.4-1bookworm) bookworm; urgency=high
+
+  * Merge branch 'humble' into test-ekf
+  * Merge branch 'humble' into test-spellcheck
+  * Contributors: rafal-gorecki
+
+ -- Husarion <support@husarion.com>  Wed, 20 Sep 2023 22:00:00 -0000
+
+ros-jazzy-rosbot (0.8.3-1bookworm) bookworm; urgency=high
+
+  * Merge remote-tracking branch 'origin/humble' into test-black
+  * Merge remote-tracking branch 'origin/humble' into test-bringup
+  * Contributors: Jakub Delicat
+
+ -- Husarion <support@husarion.com>  Tue, 19 Sep 2023 22:00:00 -0000
+
+ros-jazzy-rosbot (0.8.2-1bookworm) bookworm; urgency=high
+
+
+
+ -- Husarion <support@husarion.com>  Thu, 31 Aug 2023 22:00:00 -0000
+
+ros-jazzy-rosbot (0.8.1-1bookworm) bookworm; urgency=high
+
+  * Merge pull request #66 <https://github.com/husarion/rosbot_ros/issues/66> from husarion/humble-update-simulation-dependencies
+    Rename gazebo_worlds to husarion_office_gz
+  * Contributors: Jakub Delicat
+
+ -- Husarion <support@husarion.com>  Wed, 30 Aug 2023 22:00:00 -0000
+
+ros-jazzy-rosbot (0.8.0-1bookworm) bookworm; urgency=high
+
+
+
+ -- Husarion <support@husarion.com>  Tue, 15 Aug 2023 22:00:00 -0000
+
+ros-jazzy-rosbot (0.7.0-1bookworm) bookworm; urgency=high
+
+  * Merge pull request #57 <https://github.com/husarion/rosbot_ros/issues/57> from husarion/ros2-ign-camera-fix
+    Unify astra URDF | workaround pointloud frame
+  * Contributors: Jakub Delicat
+
+ -- Husarion <support@husarion.com>  Sun, 30 Jul 2023 22:00:00 -0000
+
+ros-jazzy-rosbot (0.6.1-1bookworm) bookworm; urgency=high
+
+
+
+ -- Husarion <support@husarion.com>  Thu, 18 May 2023 22:00:00 -0000
+
+ros-jazzy-rosbot (0.6.0-1bookworm) bookworm; urgency=high
+
+  * Merge pull request #45 <https://github.com/husarion/rosbot_ros/issues/45> from husarion/add-mecanum-wheels
+    Add mecanum wheels in real robot and simulation
+  * Merge remote-tracking branch 'origin/humble' into add-mecanum-wheels
+  * Contributors: Jakub Delicat
+
+ -- Husarion <support@husarion.com>  Wed, 03 May 2023 22:00:00 -0000
+
+ros-jazzy-rosbot (0.5.1-1bookworm) bookworm; urgency=high
+
+  * Merge pull request #46 <https://github.com/husarion/rosbot_ros/issues/46> from husarion/fix-ros-build-flag
+    Change build flag to HUSARION_ROS_BUILD
+  * Contributors: Jakub Delicat
+
+ -- Husarion <support@husarion.com>  Sun, 02 Apr 2023 22:00:00 -0000
+
+ros-jazzy-rosbot (0.5.0-1bookworm) bookworm; urgency=high
+
+  * Merge pull request #43 <https://github.com/husarion/rosbot_ros/issues/43> from Kotochleb/humble-add-ignition-support
+    Add ignition support
+  * Contributors: Jakub Delicat
+
+ -- Husarion <support@husarion.com>  Tue, 21 Mar 2023 23:00:00 -0000
+
+ros-jazzy-rosbot (0.4.0-1bookworm) bookworm; urgency=high
+
+
+
+ -- Husarion <support@husarion.com>  Wed, 08 Mar 2023 23:00:00 -0000
+
+ros-jazzy-rosbot (0.3.0-1bookworm) bookworm; urgency=high
+
+  * Merge pull request #41 <https://github.com/husarion/rosbot_ros/issues/41> from husarion/refactor-project-struct
+    update package description
+  * Merge pull request #40 <https://github.com/husarion/rosbot_ros/issues/40> from husarion/refactor-project-struct
+    remove empty changelog
+  * Merge pull request #39 <https://github.com/husarion/rosbot_ros/issues/39> from husarion/refactor-project-struct
+    set same packages version
+  * Merge pull request #38 <https://github.com/husarion/rosbot_ros/issues/38> from husarion/refactor-project-struct
+    Refactor project struct
+  * Contributors: Jakub Delicat
+
+ -- Husarion <support@husarion.com>  Tue, 31 Jan 2023 23:00:00 -0000
+
+
