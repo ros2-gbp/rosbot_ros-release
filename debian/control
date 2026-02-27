@@ -1,0 +1,12 @@
+Source: ros-jazzy-rosbot-gazebo
+Section: misc
+Priority: optional
+Maintainer: Husarion <support@husarion.com>
+Build-Depends: debhelper (>= 9.0.0), ros-jazzy-ros-workspace, python3-all, python3-setuptools, dh-python
+Homepage: https://husarion.com/
+Standards-Version: 3.9.2
+
+Package: ros-jazzy-rosbot-gazebo
+Architecture: any
+Depends: ${python3:Depends}, ${misc:Depends}, ros-jazzy-ros-workspace
+Description: Gazebo simulation for ROSbot Series
