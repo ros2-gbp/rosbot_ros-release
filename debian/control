@@ -1,0 +1,12 @@
+Source: ros-jazzy-rosbot-joy
+Section: misc
+Priority: optional
+Maintainer: Husarion <support@husarion.com>
+Build-Depends: debhelper (>= 9.0.0), ros-jazzy-ament-cmake, ros-jazzy-builtin-interfaces, ros-jazzy-control-msgs, ros-jazzy-geometry-msgs, ros-jazzy-moveit-msgs, ros-jazzy-moveit-ros-planning, ros-jazzy-moveit-ros-planning-interface, ros-jazzy-moveit-servo, ros-jazzy-rclcpp, ros-jazzy-sensor-msgs, ros-jazzy-ros-workspace
+Homepage: https://husarion.com/
+Standards-Version: 3.9.2
+
+Package: ros-jazzy-rosbot-joy
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-jazzy-builtin-interfaces, ros-jazzy-control-msgs, ros-jazzy-geometry-msgs, ros-jazzy-joy, ros-jazzy-launch, ros-jazzy-launch-ros, ros-jazzy-moveit-msgs, ros-jazzy-moveit-ros-planning, ros-jazzy-moveit-ros-planning-interface, ros-jazzy-moveit-servo, ros-jazzy-rclcpp, ros-jazzy-sensor-msgs, ros-jazzy-teleop-twist-joy, ros-jazzy-ros-workspace
+Description: The rosbot_joy package to handle joystick inputs for the rosbot and open manipulator
