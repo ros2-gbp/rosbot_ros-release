@@ -1,0 +1,12 @@
+Source: ros-jazzy-rosbot-controller
+Section: misc
+Priority: optional
+Maintainer: Husarion <support@husarion.com>
+Build-Depends: debhelper (>= 9.0.0), python3-pytest <!nocheck>, ros-jazzy-ament-cmake, ros-jazzy-ament-cmake-pytest <!nocheck>, ros-jazzy-rosbot-description <!nocheck>, ros-jazzy-xacro <!nocheck>, ros-jazzy-ros-workspace
+Homepage: https://husarion.com/
+Standards-Version: 3.9.2
+
+Package: ros-jazzy-rosbot-controller
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-jazzy-controller-manager, ros-jazzy-diff-drive-controller, ros-jazzy-imu-sensor-broadcaster, ros-jazzy-joint-state-broadcaster, ros-jazzy-launch, ros-jazzy-launch-ros, ros-jazzy-mecanum-drive-controller, ros-jazzy-nav2-common, ros-jazzy-position-controllers, ros-jazzy-ros2controlcli, ros-jazzy-rosbot-description, ros-jazzy-rosbot-moveit, ros-jazzy-rosbot-utils, ros-jazzy-xacro, udev, ros-jazzy-ros-workspace
+Description: Hardware configuration for ROSbot Series
