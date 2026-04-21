@@ -30,36 +30,26 @@ Documentation is available in ROS_API.md.
    git clone -b jazzy https://github.com/husarion/rosbot_ros.git src/rosbot_ros
    ```
 
-### Configure environment
-
-The repository is used to run the code both on the real robot and in the simulation. Specify `HUSARION_ROS_BUILD_TYPE` the variable according to your needs.
-
-Real robot:
-
-```bash
-export HUSARION_ROS_BUILD_TYPE=hardware
-```
-
-Simulation:
-
-```bash
-export HUSARION_ROS_BUILD_TYPE=simulation
-```
-
 ### Build
 
 ```bash
 source /opt/ros/$ROS_DISTRO/setup.bash
 
-vcs import src < src/rosbot_ros/rosbot/rosbot_${HUSARION_ROS_BUILD_TYPE}.repos
-vcs import src < src/rosbot_ros/rosbot/manipulator.repos # For ROSbot XL manipulation package
+vcs import src < src/rosbot_ros/rosbot/rosbot_hardware.repos
+vcs import src < src/rosbot_ros/rosbot/rosbot_simulation.repos
+
+# Optional: speed up build by removing unnecessary packages
+# For hardware build only, remove simulation package:
+# rm -rf src/rosbot_ros/rosbot_gazebo
+# For simulation build only, remove hardware package:
+# rm -rf src/rosbot_ros/rosbot_bringup
 
 export PIP_BREAK_SYSTEM_PACKAGES=1
 sudo rosdep init
 rosdep update --rosdistro $ROS_DISTRO
 rosdep install -i --from-path src --rosdistro $ROS_DISTRO -y
 
-colcon build --symlink-install --packages-up-to rosbot --cmake-args -DCMAKE_BUILD_TYPE=Release
+colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
 ```
 
 #### Run the Robot
@@ -70,17 +60,15 @@ For ROSbot XL, you can specify a particular configuration using the launch `conf
 
 ```bash
 source install/setup.bash
-ros2 launch rosbot_bringup bringup.yaml robot_model:=<rosbot/rosbot_xl>
+ros2 launch rosbot_bringup <rosbot/rosbot_xl>.yaml
 ```
 
 > [!NOTE]
-> To run the software on real ROSbots, communication with the CORE2 is required. Ensure the firmware is updated before running the micro-ROS agent. For detailed instructions, refer to the rosbot_ros2_firmware repository.
+> The ROSbot ROS Driver is strongly dependent on the firmware version. If you change driver version or ROS distro, ensure the firmware is compatible. Firmware can be updated with the `flash_firmware` script.
 >
 > ```bash
-> sudo su
 > source install/setup.bash
 > ros2 run rosbot_utils flash_firmware --robot-model <rosbot/rosbot_xl>
-> exit
 > ```
 
 **Simulation:**
@@ -89,6 +77,14 @@ ros2 launch rosbot_bringup bringup.yaml robot_model:=<rosbot/rosbot_xl>
 source install/setup.bash
 ros2 launch rosbot_gazebo simulation.yaml robot_model:=<rosbot/rosbot_xl>
 ```
+
+> [!TIP]
+> You can spawn multiple robots in the simulation. To do that, run the launch file multiple times with different namespaces and initial positions (x, y, z). For example:
+>
+> ```bash
+> source install/setup.bash
+> ros2 launch rosbot_gazebo spawn_robot.yaml robot_model:=<rosbot/rosbot_xl> namespace:=robot1 x:=0 y:=0
+> ```
 
 ### Launch Arguments
 
@@ -111,6 +107,7 @@ ros2 launch rosbot_gazebo simulation.yaml robot_model:=<rosbot/rosbot_xl>
 | ✅  | ❌  | `port`              | **ROSbot XL only.** UDP4 port for micro-ROS agent. <br/> **_string:_** `8888`                                                                                                                         |
 | ✅  | ❌  | `serial_baudrate`   | ROSbot only. Baud rate for serial communication. <br/> **_string:_** `576000`                                                                                                                                  |
 | ✅  | ❌  | `serial_port`       | ROSbot only. Serial port for micro-ROS agent. <br/> **_string:_** `/dev/ttySERIAL`                                                                                                           |
+| ✅  | ✅  | `tf_namespace_bridge` | Bridge robot's namespaced TF to the global /tf and /tf_static. Only active when `namespace` is set. <br/> **_bool:_** `True`                                                              |
 | ❌  | ✅  | `gz_gui`            | Run simulation with specific GUI layout. <br/> **_string:_** [`teleop.config`](https://github.com/husarion/husarion_gz_worlds/blob/main/config/teleop.config)                                      |
 | ❌  | ✅  | `gz_headless_mode`  | Run the simulation in headless mode. Useful when a GUI is not needed or to reduce the number of calculations. <br/> **_bool:_** `False`                                                            |
 | ❌  | ✅  | `gz_log_level`      | Adjust the level of console output. <br/> **_int:_** `1` (choices: `0`, `1`, `2`, `3`, `4`)                                                                                                        |
@@ -124,7 +121,7 @@ ros2 launch rosbot_gazebo simulation.yaml robot_model:=<rosbot/rosbot_xl>
 | ❌  | ✅  | `yaw`               | Initial robot 'yaw' orientation. <br/> **_float:_** `0.0`                                                                                                                                          |
 
 > [!TIP]
-> To read the arguments for individual launch files, add the `-s` flag to the `ros2 launch` command (e.g. `ros2 launch rosbot_bringup bringup.yaml ​​-s`)
+> To read the arguments for individual launch files, add the `-s` flag to the `ros2 launch` command (e.g. `ros2 launch <pkg> <launch> ​​-s`)
 
 ## 🕹️ Demo
 
