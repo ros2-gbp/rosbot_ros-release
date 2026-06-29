@@ -11,19 +11,12 @@ launch:
       name: RCUTILS_COLORIZED_OUTPUT
       value: '1'
 
-  - set_remap:
-      from: /diagnostics
-      to: diagnostics
-  - set_remap:
-      from: /tf
-      to: tf
-  - set_remap:
-      from: /tf_static
-      to: tf_static
+  - set_env:
+      name: RCUTILS_CONSOLE_OUTPUT_FORMAT
+      value: '[{severity}] [{date_time_with_ms}] [{name}]: {message}'
 
-  - set_parameter:
-      name: use_sim_time
-      value: 'True'
+  - set_use_sim_time:
+      value: true
 
   - let:
       name: gz_bridge_config
