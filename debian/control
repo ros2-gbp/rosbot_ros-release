@@ -1,0 +1,12 @@
+Source: ros-jazzy-rosbot-gazebo
+Section: misc
+Priority: optional
+Maintainer: "Husarion" <support@husarion.com>
+Build-Depends: debhelper (>= 9.0.0), python3-pytest <!nocheck>, python3-yaml <!nocheck>, ros-jazzy-ament-cmake, ros-jazzy-ament-cmake-pytest <!nocheck>, ros-jazzy-rosbot-description <!nocheck>, ros-jazzy-ros-workspace
+Homepage: https://husarion.com/
+Standards-Version: 3.9.2
+
+Package: ros-jazzy-rosbot-gazebo
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-jazzy-gz-ros2-control, ros-jazzy-husarion-gz-worlds, ros-jazzy-launch, ros-jazzy-launch-ros, ros-jazzy-ros-gz-bridge, ros-jazzy-ros-gz-sim, ros-jazzy-rosbot-controller, ros-jazzy-rosbot-joy, ros-jazzy-rosbot-localization, ros-jazzy-rosbot-utils, ros-jazzy-rviz2, ros-jazzy-tf-namespace-bridge, ros-jazzy-ros-workspace
+Description: Gazebo simulation for ROSbot Series
