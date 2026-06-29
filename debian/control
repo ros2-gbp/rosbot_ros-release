@@ -1,0 +1,12 @@
+Source: ros-jazzy-rosbot-moveit
+Section: misc
+Priority: optional
+Maintainer: "Husarion" <support@husarion.com>
+Build-Depends: debhelper (>= 9.0.0), ros-jazzy-ament-cmake, ros-jazzy-ament-cmake-pytest <!nocheck>, ros-jazzy-control-msgs, ros-jazzy-geometry-msgs, ros-jazzy-moveit-core, ros-jazzy-moveit-msgs, ros-jazzy-moveit-ros-planning, ros-jazzy-moveit-ros-planning-interface, ros-jazzy-moveit-servo, ros-jazzy-rclcpp, ros-jazzy-rclcpp-action, ros-jazzy-sensor-msgs, ros-jazzy-trajectory-msgs, ros-jazzy-ros-workspace
+Homepage: http://moveit.ros.org/
+Standards-Version: 3.9.2
+
+Package: ros-jazzy-rosbot-moveit
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-jazzy-control-msgs, ros-jazzy-geometry-msgs, ros-jazzy-moveit-configs-utils, ros-jazzy-moveit-core, ros-jazzy-moveit-kinematics, ros-jazzy-moveit-msgs, ros-jazzy-moveit-planners, ros-jazzy-moveit-ros-move-group, ros-jazzy-moveit-ros-planning, ros-jazzy-moveit-ros-planning-interface, ros-jazzy-moveit-ros-visualization, ros-jazzy-moveit-servo, ros-jazzy-moveit-setup-assistant, ros-jazzy-moveit-simple-controller-manager, ros-jazzy-rclcpp, ros-jazzy-rclcpp-action, ros-jazzy-rosbot-description, ros-jazzy-rosbot-joy, ros-jazzy-rviz-common, ros-jazzy-rviz-default-plugins, ros-jazzy-rviz2, ros-jazzy-sensor-msgs, ros-jazzy-trajectory-msgs, ros-jazzy-ros-workspace
+Description: An automatically generated package with all the configuration and launch files for using the rosbot_xl with the MoveIt Motion Planning Framework
