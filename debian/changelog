@@ -1,0 +1,103 @@
+ros-jazzy-rosbot-moveit (1.1.1-1bookworm) bookworm; urgency=high
+
+  * Declare moveit_core dependency in rosbot_moveit
+  * Contributors: rafal-gorecki
+
+ -- "Husarion" <support@husarion.com>  Sun, 28 Jun 2026 22:00:00 -0000
+
+ros-jazzy-rosbot-moveit (1.1.0-1bookworm) bookworm; urgency=high
+
+  * Add MAVLink backend alongside micro-ROS (runtime-switch firmware) (#175 <https://github.com/husarion/rosbot_ros/issues/175>)
+  * Namespace audit + bringup quieting + docs/test cleanup (#173 <https://github.com/husarion/rosbot_ros/issues/173>)
+  * Tests: CI coverage for every rosbot_* package (#171 <https://github.com/husarion/rosbot_ros/issues/171>)
+  * Refactor rosbot_moveit: joy2servo migration + Cartesian arm control (#170 <https://github.com/husarion/rosbot_ros/issues/170>)
+  * Namespace MoveIt topics in joy2servo and servo_node
+  * Contributors: Rafal Gorecki, rafal-gorecki
+
+ -- "Husarion" <support@husarion.com>  Sun, 14 Jun 2026 22:00:00 -0000
+
+ros-jazzy-rosbot-moveit (1.0.0-1bookworm) bookworm; urgency=high
+
+  * Fix rosbot_moveit dependencies
+  * Add missing changelog descriptions for past releases (#167 <https://github.com/husarion/rosbot_ros/issues/167>)
+    * Remove automatic bump
+    * Add missing changelog descriptions for past releases
+  * Contributors: Rafal Gorecki, rafal-gorecki
+
+ -- "Husarion" <support@husarion.com>  Mon, 20 Apr 2026 22:00:00 -0000
+
+ros-jazzy-rosbot-moveit (0.18.8-1bookworm) bookworm; urgency=high
+
+  * Remove conditional dependencies
+  * Migrate rest of the ament_python pkg to ament_cmake
+  * Contributors: rafal-gorecki
+
+ -- "Husarion" <support@husarion.com>  Sun, 01 Mar 2026 23:00:00 -0000
+
+ros-jazzy-rosbot-moveit (0.18.7-1bookworm) bookworm; urgency=high
+
+  * Update public action version in workflow
+  * Contributors: rafal-gorecki
+
+ -- "Husarion" <support@husarion.com>  Thu, 26 Feb 2026 23:00:00 -0000
+
+ros-jazzy-rosbot-moveit (0.18.6-1bookworm) bookworm; urgency=high
+
+  * Unnecesary auto release
+  * Contributors: rafal-gorecki
+
+ -- "Husarion" <support@husarion.com>  Thu, 26 Feb 2026 23:00:00 -0000
+
+ros-jazzy-rosbot-moveit (0.18.5-1bookworm) bookworm; urgency=high
+
+  * prepare for apt release: execute catkin_generate_changelog manually
+  * Contributors: rafal-gorecki
+
+ -- "Husarion" <support@husarion.com>  Thu, 26 Feb 2026 23:00:00 -0000
+
+ros-jazzy-rosbot-moveit (0.18.4-1bookworm) bookworm; urgency=high
+
+  * rosbot_bringup: migrate ament_python pkg to ament_cmake package
+  * Contributors: rafal-gorecki
+
+ -- "Husarion" <support@husarion.com>  Thu, 26 Feb 2026 23:00:00 -0000
+
+ros-jazzy-rosbot-moveit (0.18.3-1bookworm) bookworm; urgency=high
+
+  * Use apt instead pip dependencies (python3-pyftdi-pip to python3-ftdi)
+  * Contributors: rafal-gorecki
+
+ -- "Husarion" <support@husarion.com>  Wed, 25 Feb 2026 23:00:00 -0000
+
+ros-jazzy-rosbot-moveit (0.18.2-1bookworm) bookworm; urgency=high
+
+  * Migrate ROS2 launch from Python to YAML
+  * Contributors: rafal-gorecki
+
+ -- "Husarion" <support@husarion.com>  Wed, 25 Feb 2026 23:00:00 -0000
+
+ros-jazzy-rosbot-moveit (0.18.1-1bookworm) bookworm; urgency=high
+
+  * Exceed arm_activate timeout
+  * Add Husarion packages of: open_manipulator_description, open_manipulator_joy, open_manipulator_moveit
+  * Use fixed mecanum controller
+  * Contributors: rafal-gorecki
+
+ -- "Husarion" <support@husarion.com>  Tue, 09 Dec 2025 23:00:00 -0000
+
+ros-jazzy-rosbot-moveit (0.18.0-1bookworm) bookworm; urgency=high
+
+  * Add rosbot_hardware_interfaces into rosbot_ros
+  * Fix: wrong frame_id in simulated sensors when namespace is used
+  * Enable color logs
+  * Add stm32flasher dependency
+  * Reduce number of controller config files
+  * One spawner for all controllers (reduce number of spawn node)
+  * Add activate_arm arg
+  * Add a script to activate/deactivate the arm
+  * Rename topic: imu_broadcaster/imu to imu/data
+  * Contributors: rafal-gorecki
+
+ -- "Husarion" <support@husarion.com>  Sun, 07 Dec 2025 23:00:00 -0000
+
+
