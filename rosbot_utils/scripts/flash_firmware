@@ -20,6 +20,7 @@ import signal
 import sys
 
 from ament_index_python.packages import get_package_share_directory
+from rosbot_utils.firmware_version import FIRMWARE_VERSION
 from rosbot_utils.mcu_manager_ftdi import McuManagerFTDI
 from rosbot_utils.mcu_manager_uart import McuManagerUART
 
@@ -44,6 +45,7 @@ def main(args=None):
     parser = argparse.ArgumentParser(description="Flash ROSbot Firmware")
     _robot_model_env = os.getenv("ROBOT_MODEL")
     parser.add_argument(
+        "-m",
         "--robot-model",
         required=_robot_model_env is None,
         default=_robot_model_env,
@@ -69,8 +71,11 @@ def main(args=None):
         args.usb = True
 
     rosbot_utils = get_package_share_directory("rosbot_utils")
-    robot_firmware = os.path.join(rosbot_utils, "firmware", robot_model, "v1.0.0-jazzy.bin")
+    robot_firmware = os.path.join(
+        rosbot_utils, "firmware", f"{robot_model}-{FIRMWARE_VERSION}.bin"
+    )
     firmware = args.file if args.file else robot_firmware
+    print(f"Using firmware file: {firmware}")
 
     try:
         if args.usb:
@@ -94,6 +99,7 @@ def main(args=None):
         print("Firmware flashing completed successfully!")
     except Exception as e:
         print(f"ERROR: {e}")
+        sys.exit(1)
 
 
 if __name__ == "__main__":
