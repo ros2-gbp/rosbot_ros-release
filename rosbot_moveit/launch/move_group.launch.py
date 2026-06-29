@@ -33,8 +33,8 @@ def generate_launch_description():
         [FindPackageShare("rosbot_description"), "config", "rosbot_xl", "manipulation.yaml"]
     )
 
-    # Overwrite description to include potential changes - moveit config builder will construct urdf
-    # with default values
+    # Override builder's vanilla xacro so URDF matches bringup
+    # (components_config + configuration:='manipulation').
     robot_description_content = Command(
         [
             PathJoinSubstitution([FindExecutable(name="xacro")]),
@@ -57,6 +57,8 @@ def generate_launch_description():
         "publish_robot_description_semantic": True,
         "allow_trajectory_execution": True,
         "capabilities": "",
+        # OccupancyMapMonitor runs unconditionally inside PlanningSceneMonitor;
+        # without sensors_3d.yaml it logs one ERROR + WARN at startup. Accepted.
         "disable_capabilities": "",
         "monitor_dynamics": False,
         "publish_planning_scene": True,
@@ -79,8 +81,6 @@ def generate_launch_description():
         executable="move_group",
         output="screen",
         parameters=move_group_params,
-        # Set the display variable, in case OpenGL code is used internally
-        # additional_env={"DISPLAY": ":1"},
     )
 
     return LaunchDescription([move_group_node])
