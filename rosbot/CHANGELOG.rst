@@ -2,6 +2,26 @@
 Changelog for package rosbot
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.1.1 (2026-06-29)
+------------------
+* Bump husarion_components_description
+* Update rosbot body mesh; retune camera mount; bump husarion_components_description
+* Adopt custom component: bump dep + link docs in configs (`#184 <https://github.com/husarion/rosbot_ros/issues/184>`_)
+  * Bump husarion_components_description (custom component)
+  * Link custom component docs in description configs
+  * just sim: force NVIDIA EGL vendor to silence Mesa warnings
+* Contributors: Rafal Gorecki, rafal-gorecki
+
+1.1.0 (2026-06-15)
+------------------
+* Bump rosbot-firmware to MAVLink serial_port fix
+* Bump firmware to v2.0.1-jazzy
+* Add MAVLink backend alongside micro-ROS (runtime-switch firmware) (`#175 <https://github.com/husarion/rosbot_ros/issues/175>`_)
+* Namespace audit + bringup quieting + docs/test cleanup (`#173 <https://github.com/husarion/rosbot_ros/issues/173>`_)
+* Bump tf_namespace_bridge and clean up gazebo launches
+* Bump tf_namespace_bridge with frame_filters parameters
+* Contributors: Rafal Gorecki, rafal-gorecki
+
 1.0.0 (2026-04-21)
 ------------------
 * New firmware with microros namespace pre-communication support (`#168 <https://github.com/husarion/rosbot_ros/issues/168>`_)

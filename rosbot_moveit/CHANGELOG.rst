@@ -2,6 +2,20 @@
 Changelog for package rosbot_moveit
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.1.1 (2026-06-29)
+------------------
+* Declare moveit_core dependency in rosbot_moveit
+* Contributors: rafal-gorecki
+
+1.1.0 (2026-06-15)
+------------------
+* Add MAVLink backend alongside micro-ROS (runtime-switch firmware) (`#175 <https://github.com/husarion/rosbot_ros/issues/175>`_)
+* Namespace audit + bringup quieting + docs/test cleanup (`#173 <https://github.com/husarion/rosbot_ros/issues/173>`_)
+* Tests: CI coverage for every rosbot\_* package (`#171 <https://github.com/husarion/rosbot_ros/issues/171>`_)
+* Refactor rosbot_moveit: joy2servo migration + Cartesian arm control (`#170 <https://github.com/husarion/rosbot_ros/issues/170>`_)
+* Namespace MoveIt topics in joy2servo and servo_node
+* Contributors: Rafal Gorecki, rafal-gorecki
+
 1.0.0 (2026-04-21)
 ------------------
 * Fix rosbot_moveit dependencies
