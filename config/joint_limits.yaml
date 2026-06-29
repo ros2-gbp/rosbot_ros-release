@@ -10,17 +10,14 @@ default_acceleration_scaling_factor: 0.1
 # Joint limits can be turned off with [has_velocity_limits, has_acceleration_limits]
 joint_limits:
   gripper_left_joint:
+    # Prismatic joint (m/s, m/s²); tuned on HW 2026-05-19 (CLAUDE.md sec 9).
     has_velocity_limits: true
-    max_velocity: 4.796164779
+    max_velocity: 0.10  # m/s
     has_acceleration_limits: true
-    max_acceleration: 18.7253757
+    max_acceleration: 2.0  # m/s²
     has_position_limits: true
 
-  gripper_right_joint:
-    has_velocity_limits: true
-    max_velocity: 4.796164779
-    has_acceleration_limits: true
-    max_acceleration: 18.7253757
+  # gripper_right_joint is <passive_joint> in SRDF (mimic); not planned.
   joint1:
     has_velocity_limits: true
     max_velocity: 4.796164779
