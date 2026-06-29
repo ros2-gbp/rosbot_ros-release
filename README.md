@@ -54,7 +54,7 @@ colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
 
 #### Run the Robot
 
-For ROSbot XL, you can specify a particular configuration using the launch `configuration` argument. If you are using the `manipulation` configuration, please refer to [MANIPULATOR.md](MANIPULATOR.md) for detailed instructions.
+For ROSbot XL, you can specify a particular configuration using the launch `configuration` argument. If you are using the `manipulation` configuration, please refer to [MANIPULATOR.md](MANIPULATOR.md) for detailed instructions — including the **gamepad controls** for the OpenMANIPULATOR-X (`X` = joint-jog mode, `Y` = Cartesian XYZ via MoveIt Servo POSE, `RT + Back/Start` = Dock/Home named poses).
 
 **Real robot:**
 
@@ -70,6 +70,8 @@ ros2 launch rosbot_bringup <rosbot/rosbot_xl>.yaml
 > source install/setup.bash
 > ros2 run rosbot_utils flash_firmware --robot-model <rosbot/rosbot_xl>
 > ```
+>
+> The runtime-switch firmware variant covers both backends; flash it the usual way and pick the link at boot via `backend:=microros` (default `mavlink`).
 
 **Simulation:**
 
@@ -85,6 +87,9 @@ ros2 launch rosbot_gazebo simulation.yaml robot_model:=<rosbot/rosbot_xl>
 > source install/setup.bash
 > ros2 launch rosbot_gazebo spawn_robot.yaml robot_model:=<rosbot/rosbot_xl> namespace:=robot1 x:=0 y:=0
 > ```
+>
+> All topics/services/actions are namespaced under `/<namespace>/` on HW
+> and sim — see [Namespace policy](ROS_API.md#namespace-policy).
 
 ### Launch Arguments
 
@@ -95,17 +100,20 @@ ros2 launch rosbot_gazebo simulation.yaml robot_model:=<rosbot/rosbot_xl>
 
 | 🤖  | 🖥️  | Argument            | Description <br/> **_Type:_** `Default`                                                                                                                                                            |
 | --- | --- | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ✅  | ✅  | `arm_activate`    | Whether to activate the manipulator arm on startup.. <br/> **_bool:_** `False` (`True` for simulation)                                                                          |
+| ✅  | ✅  | `arm_activate`    | Whether to activate the manipulator arm on startup. <br/> **_bool:_** `False` (`True` for simulation)                                                                          |
 | ✅  | ✅  | `config_dir`    | Path to the common configuration directory. You can create such common configuration directory with `ros2 run rosbot_utils create_config_dir {directory}`. <br/> **_string:_** `""`                                                                          |
-| ✅  | ✅  | `configuration` | Specify configuration packages. Currently only ROSbot XL has available packages. Packages: `basic`, `telepresence`, `autonomy`, `manipulation`, `manipulation_pro`, `custom`. <br/> **_string:_** `basic`                                                                          |
+| ✅  | ✅  | `configuration` | Specify configuration packages. ROSbot XL has the full set; ROSbot 2/3 only `basic`/`custom`. Packages: `basic`, `telepresence`, `autonomy`, `manipulation`, `manipulation_pro`, `custom`. <br/> **_string:_** `basic`                                                                          |
+| ✅  | ✅  | `controller_manager_timeout` | Seconds the spawner waits for `controller_manager` to load + activate the controllers (raised from 20 for slower SBCs such as the Raspberry Pi 5 on ROSbot 3). <br/> **_int:_** `60`                                                                          |
 | ✅  | ✅  | `joy_vel`       | The topic name to which velocity commands will be published. <br/> **_string:_** `cmd_vel` |
-| ✅  | ✅  | `mecanum`           | Whether to use mecanum drive controller, otherwise use diff drive. <br/> **_bool:_** `False`                                                                                       |
+| ✅  | ❌  | `led_strip`       | ROSbot XL only. Enable or disable the LED strip. <br/> **_bool:_** `True` |
+| ✅  | ✅  | `mecanum`           | Whether to use mecanum drive controller, otherwise use diff drive. <br/> **_bool:_** `True` for `rosbot_xl`, `False` otherwise                                                                                       |
 | ✅  | ✅  | `namespace`         | Add namespace to all launched nodes. <br/> **_string:_** `env(ROBOT_NAMESPACE)`                                                                                                                       |
 | ✅  | ✅  | `robot_model`       | Specify robot model. <br/> **_string:_** `env(ROBOT_MODEL)` (choices: `rosbot`, `rosbot_xl`)                                                                                                                       |
-| ✅  | ❌  | `manipulator_serial_port`  | Port to connect to the manipulator. <br/> **_string:_** `/dev/ttyUSB0`                                                                                                                                  |
-| ✅  | ❌  | `microros`          | Automatically connect with hardware using microros. <br/> **_bool:_** `True`                                                                                                                       |
+| ✅  | ❌  | `backend`           | MCU↔SBC upstream-link backend the hardware bridge drives. `microros` starts the XRCE-DDS agent (`micro_ros_agent`); `mavlink` starts the `rosbot_mavlink_bridge` node. The matching `BACKEND:` line is emitted to the MCU during the pre-comm handshake; runtime-switch firmware brings up the chosen path. <br/> **_string:_** `mavlink` (choices: `microros`, `mavlink`)                                                                                                                          |
+| ✅  | ❌  | `hardware_bridge`   | Whether to launch the SBC↔MCU bridge (selected by `backend`). Set to `False` to skip it entirely (e.g. when running the bridge/agent in a separate container). <br/> **_bool:_** `True`                                                                                                                       |
+| ✅  | ❌  | `manipulator_serial_port`  | Port to connect to the manipulator. <br/> **_string:_** `/dev/manipulator`                                                                                                                                  |
 | ✅  | ❌  | `port`              | **ROSbot XL only.** UDP4 port for micro-ROS agent. <br/> **_string:_** `8888`                                                                                                                         |
-| ✅  | ❌  | `serial_baudrate`   | ROSbot only. Baud rate for serial communication. <br/> **_string:_** `576000`                                                                                                                                  |
+| ✅  | ❌  | `serial_baudrate`   | ROSbot only. Baud rate for serial communication. <br/> **_string:_** `921600`                                                                                                                                  |
 | ✅  | ❌  | `serial_port`       | ROSbot only. Serial port for micro-ROS agent. <br/> **_string:_** `/dev/ttySERIAL`                                                                                                           |
 | ✅  | ✅  | `tf_namespace_bridge` | Bridge robot's namespaced TF to the global /tf and /tf_static. Only active when `namespace` is set. <br/> **_bool:_** `True`                                                              |
 | ❌  | ✅  | `gz_gui`            | Run simulation with specific GUI layout. <br/> **_string:_** [`teleop.config`](https://github.com/husarion/husarion_gz_worlds/blob/main/config/teleop.config)                                      |
