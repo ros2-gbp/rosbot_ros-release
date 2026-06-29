@@ -2,6 +2,23 @@
 Changelog for package rosbot_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.1.1 (2026-06-29)
+------------------
+* Update rosbot body mesh; retune camera mount; bump husarion_components_description
+* Adopt custom component: bump dep + link docs in configs (`#184 <https://github.com/husarion/rosbot_ros/issues/184>`_)
+  * Bump husarion_components_description (custom component)
+  * Link custom component docs in description configs
+  * just sim: force NVIDIA EGL vendor to silence Mesa warnings
+* Contributors: Rafal Gorecki, rafal-gorecki
+
+1.1.0 (2026-06-15)
+------------------
+* Add wheel effort state interface from motors feedback
+* Namespace audit + bringup quieting + docs/test cleanup (`#173 <https://github.com/husarion/rosbot_ros/issues/173>`_)
+* Tests: CI coverage for every rosbot\_* package (`#171 <https://github.com/husarion/rosbot_ros/issues/171>`_)
+* Refactor rosbot_moveit: joy2servo migration + Cartesian arm control (`#170 <https://github.com/husarion/rosbot_ros/issues/170>`_)
+* Contributors: Rafal Gorecki, rafal-gorecki
+
 1.0.0 (2026-04-21)
 ------------------
 * New firmware with microros namespace pre-communication support (`#168 <https://github.com/husarion/rosbot_ros/issues/168>`_)

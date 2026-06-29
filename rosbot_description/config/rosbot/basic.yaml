@@ -1,4 +1,5 @@
 ---
+# Custom components (own URDF + mesh): https://github.com/husarion/husarion_components_description#custom-component
 components:
   - type: LDR02
     parent_link: cover_link
@@ -7,5 +8,5 @@ components:
 
   - type: CAM11
     parent_link: camera_mount_link
-    xyz: -0.01 0.0 0.02
+    xyz: 0.0 0.0 0.0
     rpy: 0.0 0.0 0.0
