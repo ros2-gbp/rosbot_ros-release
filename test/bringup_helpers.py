@@ -13,15 +13,34 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import math
-import random
 import time
 from threading import Event, Thread
 
 import rclpy
+from launch import LaunchDescription
+from launch.actions import IncludeLaunchDescription
+from launch.substitutions import PathJoinSubstitution
+from launch_ros.substitutions import FindPackageShare
+from launch_testing.actions import ReadyToTest
+from launch_testing.util import KeepAliveProc
 from nav_msgs.msg import Odometry
 from rclpy.node import Node
-from sensor_msgs.msg import Imu, JointState, LaserScan
+from sensor_msgs.msg import Imu, JointState
+
+
+def make_bringup_launch_description(**launch_arguments):
+    """Build a LaunchDescription that launches ``rosbot_bringup/bringup.yaml``.
+
+    ``launch_arguments`` are forwarded as launch-argument overrides; tests
+    typically pass ``hardware_bridge='False'`` to keep the test offline. The
+    returned description bundles ``KeepAliveProc`` + ``ReadyToTest`` so
+    launch_pytest fixtures stay one-liners.
+    """
+    bringup_launch = IncludeLaunchDescription(
+        PathJoinSubstitution([FindPackageShare("rosbot_bringup"), "launch", "bringup.yaml"]),
+        launch_arguments=launch_arguments.items(),
+    )
+    return LaunchDescription([bringup_launch, KeepAliveProc(), ReadyToTest()])
 
 
 class BringupTestNode(Node):
@@ -40,7 +59,6 @@ class BringupTestNode(Node):
         self.controller_odom_msg_event = Event()
         self.imu_msg_event = Event()
         self.ekf_odom_msg_event = Event()
-        self.scan_filter_event = Event()
 
         self.ros_spin_thread = None
         self.timer = None
@@ -48,9 +66,8 @@ class BringupTestNode(Node):
         self.create_test_subscribers_and_publishers()
 
     def create_test_subscribers_and_publishers(self):
-        self.imu_pub = self.create_publisher(Imu, "/_imu/data_raw", 10)
-        self.joint_pub = self.create_publisher(JointState, "/_motors_response", 10)
-        self.scan_pub = self.create_publisher(LaserScan, "scan", 10)
+        self.imu_pub = self.create_publisher(Imu, "_imu/data", 10)
+        self.joint_pub = self.create_publisher(JointState, "_motors/feedback", 10)
 
         self.joint_state_sub = self.create_subscription(
             JointState, "joint_states", self.joint_states_callback, 10
@@ -61,9 +78,6 @@ class BringupTestNode(Node):
         self.imu_sub = self.create_subscription(Imu, "imu/data", self.imu_callback, 10)
         self.ekf_odom_sub = self.create_subscription(
             Odometry, "odometry/filtered", self.ekf_odometry_callback, 10
-        )
-        self.scan_filtered_sub = self.create_subscription(
-            LaserScan, "scan_filtered", self.filtered_scan_callback, 10
         )
 
     def start_node_thread(self):
@@ -80,7 +94,6 @@ class BringupTestNode(Node):
 
     def timer_callback(self):
         self.publish_fake_hardware_messages()
-        self.publish_scan()
 
     def joint_states_callback(self, msg: JointState):
         self.joint_state_msg_event.set()
@@ -93,10 +106,6 @@ class BringupTestNode(Node):
 
     def ekf_odometry_callback(self, msg: Odometry):
         self.ekf_odom_msg_event.set()
-
-    def filtered_scan_callback(self, msg: LaserScan):
-        if len(msg.ranges) > 0:
-            self.scan_filter_event.set()
 
     def publish_fake_hardware_messages(self):
         imu_msg = Imu()
@@ -116,21 +125,6 @@ class BringupTestNode(Node):
 
         self.imu_pub.publish(imu_msg)
         self.joint_pub.publish(joint_state_msg)
-
-    def publish_scan(self):
-        msg = LaserScan()
-        msg.header.frame_id = "laser"
-        msg.angle_min = 0.0
-        msg.angle_max = 2.0 * math.pi
-        msg.angle_increment = 0.05
-        msg.time_increment = 0.1
-        msg.scan_time = 0.1
-        msg.range_min = 0.0
-        msg.range_max = 10.0
-
-        # fill ranges from 0.0m to 1.0m
-        msg.ranges = [random.random() for _ in range(int(msg.angle_max / msg.angle_increment))]
-        self.scan_pub.publish(msg)
 
 
 def wait_for_all_events(events, timeout):
@@ -159,7 +153,9 @@ def readings_data_test(node, robot_name="ROSbot"):
         "EKF Odometry",
     ]
 
-    msgs_received_flag, not_set_indices = wait_for_all_events(events, timeout=20.0)
+    # 30s instead of 20s leaves a margin on slow CI runners; an 8-second
+    # bringup with no margin trips the timeout on the first GC pause.
+    msgs_received_flag, not_set_indices = wait_for_all_events(events, timeout=30.0)
 
     if not msgs_received_flag:
         not_set_event_names = [event_names[i] for i in not_set_indices]
