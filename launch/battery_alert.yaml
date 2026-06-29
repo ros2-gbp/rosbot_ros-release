@@ -16,13 +16,13 @@ launch:
         - value: rosbot_xl
 
   - let:
-      name: laser_filter_config
+      name: battery_alert_config
       value: $(eval "('$(var config_dir)/rosbot_utils' if '$(var config_dir)' else '$(find-pkg-share rosbot_utils)')
         + '/config/' + '$(var robot_model)' + '/config.yaml'")
 
   - node:
-      pkg: laser_filters
-      exec: scan_to_scan_filter_chain
-      name: laser_filters
+      pkg: rosbot_utils
+      exec: battery_alert
+      name: battery_alert
       param:
-        - from: $(var laser_filter_config)
+        - from: $(var battery_alert_config)
